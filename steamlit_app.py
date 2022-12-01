@@ -3,7 +3,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
-from urllib.error import URLError
+import urllib.error
 
 streamlit.title('My Parents New Healthy Diner')
 streamlit.header('Breakfast Menu')
@@ -26,13 +26,13 @@ streamlit.dataframe(fruit_to_show)
 
 streamlit.header("Fruityvice Fruit Advice!")
 try:
- fruit_choice = streamlit.text_input('What fruit would you like information?')
- if not fruit_choice:
-  streamlit.error("please select a fruit to get information.")
- else:
-  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-  streamlit.dataframe(fruityvice_normalized)
+  fruit_choice = streamlit.text_input('What fruit would you like information?')
+  if not fruit_choice:
+   streamlit.error("please select a fruit to get information.")
+  else:
+   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+   streamlit.dataframe(fruityvice_normalized)
   
  except URLError as e:
   streamlit.error()
