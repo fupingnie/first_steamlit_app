@@ -37,7 +37,6 @@ try:
   streamlit.error()
 
 #streamlit.write('The user entered ', fruit_choice)
-
 # write your own comment -what does the next line do? 
 # write your own comment - what does this do?
  
